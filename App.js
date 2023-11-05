@@ -1,7 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
+import {StatusBar} from "expo-status-bar";
+import {ScrollView, StyleSheet, Text, View, Image} from "react-native";
+import {Feather} from "@expo/vector-icons";
+import {FontAwesome5} from "@expo/vector-icons";
+import React from "react";
+import Container from "./Container";
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -25,24 +28,19 @@ export default function App() {
             <Text style={styles.kospiText}>코스피</Text>
             <Text style={styles.kospiValue}>3,232.53</Text>
             <Text style={styles.kospiRate}>▲ 22.22 1.12%</Text>
-            <Image
-              source={require("./assets/chart_ex.png")}
-              style={{ width: 130, height: 100 }}
-            />
+            <Image source={require("./assets/chart_ex.png")} style={{width: 130, height: 100}} />
           </View>
           <View style={styles.kospiContainer}>
             <Text style={styles.kospiText}>코스닥</Text>
             <Text style={styles.kospiValue}>732.53</Text>
             <Text style={styles.kospiRate}>▲ 8.22 1.12%</Text>
-            <Image
-              source={require("./assets/chart_ex.png")}
-              style={{ width: 130, height: 100 }}
-            />
+            <Image source={require("./assets/chart_ex.png")} style={{width: 130, height: 100}} />
           </View>
         </View>
         <View style={styles.stockList}>
           <Text>종목 리스트</Text>
         </View>
+        <Container />
       </ScrollView>
     </View>
   );
