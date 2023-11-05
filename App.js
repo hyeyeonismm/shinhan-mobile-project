@@ -1,13 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import {
-  FontAwesome5,
-  MaterialIcons,
-  MaterialCommunityIcons,
-  Ionicons,
-} from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
+import {StatusBar} from "expo-status-bar";
+import {ScrollView, StyleSheet, Text, View, Image} from "react-native";
+import {Feather} from "@expo/vector-icons";
+import {FontAwesome5, MaterialIcons, MaterialCommunityIcons, Ionicons} from "@expo/vector-icons";
+import {LinearGradient} from "expo-linear-gradient";
+import Container from "./Container";
 
 export default function App() {
   return (
@@ -18,23 +14,13 @@ export default function App() {
         <FontAwesome5 name="bell" size={24} color="#343434" />
       </View>
 
-      <ScrollView contentContainerStyle={styles.body}>
+      <ScrollView style={{flex: 1}} contentContainerStyle={styles.body}>
         <View style={styles.stockTab}>
-          <LinearGradient
-            colors={["#6CB0D6", "#6E6CD6"]}
-            start={{ x: 0, y: 1 }}
-            end={{ x: 1, y: 1 }}
-            style={[styles.tab, styles.selectedTab]}
-          >
+          <LinearGradient colors={["#6CB0D6", "#6E6CD6"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.tab, styles.selectedTab]}>
             <Text style={styles.tabText}>국내 주식</Text>
           </LinearGradient>
 
-          <LinearGradient
-            colors={["#eee", "#eee"]}
-            start={{ x: 0, y: 1 }}
-            end={{ x: 1, y: 1 }}
-            style={[styles.tab]}
-          >
+          <LinearGradient colors={["#eee", "#eee"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.tab]}>
             <Text style={styles.tabText}>해외 주식</Text>
           </LinearGradient>
         </View>
@@ -74,43 +60,18 @@ export default function App() {
 
         <View style={styles.stockList}>
           <View style={styles.stockQuickNav}>
-            <LinearGradient
-              colors={["#6CB0D6", "#6E6CD6"]}
-              start={{ x: 0, y: 1 }}
-              end={{ x: 1, y: 1 }}
-              style={[styles.stockQuickNavTab]}
-            >
-              <Text style={[styles.stockQuickNavText, styles.tabText]}>
-                계좌 잔고
-              </Text>
+            <LinearGradient colors={["#6CB0D6", "#6E6CD6"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.stockQuickNavTab]}>
+              <Text style={[styles.stockQuickNavText, styles.tabText]}>계좌 잔고</Text>
               <MaterialIcons name="account-balance" size={19} color="#ffffff" />
             </LinearGradient>
 
-            <LinearGradient
-              colors={["#6CB0D6", "#6E6CD6"]}
-              start={{ x: 0, y: 1 }}
-              end={{ x: 1, y: 1 }}
-              style={[styles.stockQuickNavTab]}
-            >
-              <Text style={[styles.stockQuickNavText, styles.tabText]}>
-                이체
-              </Text>
-              <MaterialCommunityIcons
-                name="bank-transfer"
-                size={28}
-                color="#ffffff"
-              />
+            <LinearGradient colors={["#6CB0D6", "#6E6CD6"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.stockQuickNavTab]}>
+              <Text style={[styles.stockQuickNavText, styles.tabText]}>이체</Text>
+              <MaterialCommunityIcons name="bank-transfer" size={28} color="#ffffff" />
             </LinearGradient>
 
-            <LinearGradient
-              colors={["#6CB0D6", "#6E6CD6"]}
-              start={{ x: 0, y: 1 }}
-              end={{ x: 1, y: 1 }}
-              style={[styles.stockQuickNavTab]}
-            >
-              <Text style={[styles.stockQuickNavText, styles.tabText]}>
-                보유 주식
-              </Text>
+            <LinearGradient colors={["#6CB0D6", "#6E6CD6"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.stockQuickNavTab]}>
+              <Text style={[styles.stockQuickNavText, styles.tabText]}>보유 주식</Text>
               <Ionicons name="wallet-outline" size={20} color="#ffffff" />
             </LinearGradient>
           </View>
@@ -120,34 +81,26 @@ export default function App() {
               <Text style={styles.recentStockHeaderText}>최근 본 종목</Text>
             </View>
             <View style={styles.recentStockContainer}>
-              <Image
-                source={require("./assets/logo1.png")}
-                style={{ width: 40.5, height: 41 }}
-              />
+              <Image source={require("./assets/logo1.png")} style={{width: 40.5, height: 41}} />
               <Text style={styles.recentStockTitle}>삼성전자</Text>
               <Text style={[styles.recentStockValue, styles.blue]}>69,600</Text>
               <Text style={[styles.recentStockRate, styles.blue]}>-0.14%</Text>
             </View>
             <View style={styles.recentStockContainer}>
-              <Image
-                source={require("./assets/logo3.png")}
-                style={{ width: 40.5, height: 41 }}
-              />
+              <Image source={require("./assets/logo3.png")} style={{width: 40.5, height: 41}} />
               <Text style={styles.recentStockTitle}>카카오</Text>
               <Text style={[styles.recentStockValue, styles.red]}>41,300</Text>
               <Text style={[styles.recentStockRate, styles.red]}>+7.13%</Text>
             </View>
             <View style={styles.recentStockContainer}>
-              <Image
-                source={require("./assets/logo2.png")}
-                style={{ width: 40.5, height: 41 }}
-              />
+              <Image source={require("./assets/logo2.png")} style={{width: 40.5, height: 41}} />
               <Text style={styles.recentStockTitle}>신한지주</Text>
               <Text style={[styles.recentStockValue, styles.red]}>34,900</Text>
               <Text style={[styles.recentStockRate, styles.red]}>+1.16%</Text>
             </View>
           </View>
         </View>
+        <Container />
       </ScrollView>
     </View>
   );
@@ -169,15 +122,9 @@ const styles = StyleSheet.create({
     paddingTop: 33,
   },
   body: {
-    flex: 9,
+    flexGrow: 1,
     width: "90%",
     alignItems: "center",
-    justifyContent: "center",
-  },
-  kospiWrap: {
-    flex: 3.5,
-    width: "100%",
-    flexDirection: "row",
     justifyContent: "center",
   },
   stockTab: {
