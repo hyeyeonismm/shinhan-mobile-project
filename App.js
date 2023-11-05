@@ -1,13 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import {
-  FontAwesome5,
-  MaterialIcons,
-  MaterialCommunityIcons,
-  Ionicons,
-} from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
+import {StatusBar} from "expo-status-bar";
+import {ScrollView, StyleSheet, Text, View, Image} from "react-native";
+import {Feather} from "@expo/vector-icons";
+import {FontAwesome5, MaterialIcons, MaterialCommunityIcons, Ionicons} from "@expo/vector-icons";
+import {LinearGradient} from "expo-linear-gradient";
+import React from "react";
+import Container from "./Container";
 
 export default function App() {
   return (
@@ -20,21 +17,11 @@ export default function App() {
 
       <ScrollView contentContainerStyle={styles.body}>
         <View style={styles.stockTab}>
-          <LinearGradient
-            colors={["#6CB0D6", "#6E6CD6"]}
-            start={{ x: 0, y: 1 }}
-            end={{ x: 1, y: 1 }}
-            style={[styles.tab, styles.selectedTab]}
-          >
+          <LinearGradient colors={["#6CB0D6", "#6E6CD6"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.tab, styles.selectedTab]}>
             <Text style={styles.tabText}>국내 주식</Text>
           </LinearGradient>
 
-          <LinearGradient
-            colors={["#eee", "#eee"]}
-            start={{ x: 0, y: 1 }}
-            end={{ x: 1, y: 1 }}
-            style={[styles.tab]}
-          >
+          <LinearGradient colors={["#eee", "#eee"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.tab]}>
             <Text style={styles.tabText}>해외 주식</Text>
           </LinearGradient>
         </View>
@@ -80,11 +67,7 @@ export default function App() {
             </View>
             <View style={styles.stockQuickNavTab}>
               <Text style={styles.stockQuickNavText}>이체</Text>
-              <MaterialCommunityIcons
-                name="bank-transfer"
-                size={28}
-                color="black"
-              />
+              <MaterialCommunityIcons name="bank-transfer" size={28} color="black" />
             </View>
             <View style={styles.stockQuickNavTab}>
               <Text style={styles.stockQuickNavText}>보유 주식</Text>
@@ -92,11 +75,11 @@ export default function App() {
             </View>
           </View>
         </View>
+        <Container />
       </ScrollView>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
