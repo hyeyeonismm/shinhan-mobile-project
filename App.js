@@ -1,27 +1,40 @@
-import {StatusBar} from "expo-status-bar";
-import {ScrollView, StyleSheet, Text, View, Image} from "react-native";
-import {Feather} from "@expo/vector-icons";
-import {FontAwesome5, MaterialIcons, MaterialCommunityIcons, Ionicons} from "@expo/vector-icons";
-import {LinearGradient} from "expo-linear-gradient";
-import React from "react";
-import Container from "./Container";
+import { StatusBar } from "expo-status-bar";
+import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import {
+  FontAwesome5,
+  MaterialIcons,
+  MaterialCommunityIcons,
+  Ionicons,
+} from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.header}>
-        <Feather name="menu" size={24} color="#3A697B" />
-        <FontAwesome5 name="bell" size={24} color="#3A697B" />
+        <Feather name="menu" size={24} color="#343434" />
+        <FontAwesome5 name="bell" size={24} color="#343434" />
       </View>
 
       <ScrollView contentContainerStyle={styles.body}>
         <View style={styles.stockTab}>
-          <LinearGradient colors={["#6CB0D6", "#6E6CD6"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.tab, styles.selectedTab]}>
+          <LinearGradient
+            colors={["#6CB0D6", "#6E6CD6"]}
+            start={{ x: 0, y: 1 }}
+            end={{ x: 1, y: 1 }}
+            style={[styles.tab, styles.selectedTab]}
+          >
             <Text style={styles.tabText}>국내 주식</Text>
           </LinearGradient>
 
-          <LinearGradient colors={["#eee", "#eee"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.tab]}>
+          <LinearGradient
+            colors={["#eee", "#eee"]}
+            start={{ x: 0, y: 1 }}
+            end={{ x: 1, y: 1 }}
+            style={[styles.tab]}
+          >
             <Text style={styles.tabText}>해외 주식</Text>
           </LinearGradient>
         </View>
@@ -29,8 +42,8 @@ export default function App() {
         <View style={styles.kospiWrap}>
           <View style={styles.kospiContainer}>
             <Text style={styles.kospiText}>코스피</Text>
-            <Text style={styles.kospiValue}>2,368.34</Text>
-            <Text style={styles.kospiRate}>▲25.22 1.08%</Text>
+            <Text style={[styles.kospiValue, styles.red]}>2,368.34</Text>
+            <Text style={[styles.kospiRate, styles.red]}>▲25.22 1.08%</Text>
             <View style={styles.kospiWhoWrap}>
               <Text style={styles.kospiWho}>개인</Text>
               <Text style={styles.kospiWho}>외국인</Text>
@@ -44,8 +57,8 @@ export default function App() {
           </View>
           <View style={styles.kospiContainer}>
             <Text style={styles.kospiText}>코스닥</Text>
-            <Text style={styles.kospiValue}>782.05</Text>
-            <Text style={styles.kospiRate}>▲9.21 1.19%</Text>
+            <Text style={[styles.kospiValue, styles.red]}>782.05</Text>
+            <Text style={[styles.kospiRate, styles.red]}>▲9.21 1.19%</Text>
             <View style={styles.kospiWhoWrap}>
               <Text style={styles.kospiWho}>개인</Text>
               <Text style={styles.kospiWho}>외국인</Text>
@@ -61,25 +74,85 @@ export default function App() {
 
         <View style={styles.stockList}>
           <View style={styles.stockQuickNav}>
-            <View style={styles.stockQuickNavTab}>
-              <Text style={styles.stockQuickNavText}>계좌 잔고</Text>
-              <MaterialIcons name="account-balance" size={19} color="black" />
+            <LinearGradient
+              colors={["#6CB0D6", "#6E6CD6"]}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 1 }}
+              style={[styles.stockQuickNavTab]}
+            >
+              <Text style={[styles.stockQuickNavText, styles.tabText]}>
+                계좌 잔고
+              </Text>
+              <MaterialIcons name="account-balance" size={19} color="#ffffff" />
+            </LinearGradient>
+
+            <LinearGradient
+              colors={["#6CB0D6", "#6E6CD6"]}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 1 }}
+              style={[styles.stockQuickNavTab]}
+            >
+              <Text style={[styles.stockQuickNavText, styles.tabText]}>
+                이체
+              </Text>
+              <MaterialCommunityIcons
+                name="bank-transfer"
+                size={28}
+                color="#ffffff"
+              />
+            </LinearGradient>
+
+            <LinearGradient
+              colors={["#6CB0D6", "#6E6CD6"]}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 1 }}
+              style={[styles.stockQuickNavTab]}
+            >
+              <Text style={[styles.stockQuickNavText, styles.tabText]}>
+                보유 주식
+              </Text>
+              <Ionicons name="wallet-outline" size={20} color="#ffffff" />
+            </LinearGradient>
+          </View>
+
+          <View style={styles.recentStock}>
+            <View style={styles.recentStockHeader}>
+              <Text style={styles.recentStockHeaderText}>최근 본 종목</Text>
             </View>
-            <View style={styles.stockQuickNavTab}>
-              <Text style={styles.stockQuickNavText}>이체</Text>
-              <MaterialCommunityIcons name="bank-transfer" size={28} color="black" />
+            <View style={styles.recentStockContainer}>
+              <Image
+                source={require("./assets/logo1.png")}
+                style={{ width: 40.5, height: 41 }}
+              />
+              <Text style={styles.recentStockTitle}>삼성전자</Text>
+              <Text style={[styles.recentStockValue, styles.blue]}>69,600</Text>
+              <Text style={[styles.recentStockRate, styles.blue]}>-0.14%</Text>
             </View>
-            <View style={styles.stockQuickNavTab}>
-              <Text style={styles.stockQuickNavText}>보유 주식</Text>
-              <Ionicons name="wallet-outline" size={20} color="black" />
+            <View style={styles.recentStockContainer}>
+              <Image
+                source={require("./assets/logo3.png")}
+                style={{ width: 40.5, height: 41 }}
+              />
+              <Text style={styles.recentStockTitle}>카카오</Text>
+              <Text style={[styles.recentStockValue, styles.red]}>41,300</Text>
+              <Text style={[styles.recentStockRate, styles.red]}>+7.13%</Text>
+            </View>
+            <View style={styles.recentStockContainer}>
+              <Image
+                source={require("./assets/logo2.png")}
+                style={{ width: 40.5, height: 41 }}
+              />
+              <Text style={styles.recentStockTitle}>신한지주</Text>
+              <Text style={[styles.recentStockValue, styles.red]}>34,900</Text>
+              <Text style={[styles.recentStockRate, styles.red]}>+1.16%</Text>
             </View>
           </View>
         </View>
-        <Container />
       </ScrollView>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -146,7 +219,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "#fff",
     padding: 15,
-    shadowColor: "#000",
+    shadowColor: "#343434",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -163,11 +236,9 @@ const styles = StyleSheet.create({
   },
   kospiValue: {
     fontSize: 20,
-    color: "red",
   },
   kospiRate: {
     fontSize: 12,
-    color: "red",
     marginBottom: 15,
   },
   kospiWhoWrap: {
@@ -179,17 +250,17 @@ const styles = StyleSheet.create({
     color: "#808080",
   },
   red: {
-    color: "red",
+    color: "#CB0B37",
   },
   blue: {
-    color: "blue",
+    color: "#007AFF",
   },
   stockList: {
     flex: 6,
     width: "100%",
     borderRadius: 20,
     backgroundColor: "#fff",
-    shadowColor: "#000",
+    shadowColor: "#343434",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -210,9 +281,8 @@ const styles = StyleSheet.create({
     width: "30%",
     height: 55,
     backgroundColor: "#F2F2F2",
-
     borderRadius: 10,
-    shadowColor: "#000",
+    shadowColor: "#343434",
     alignItems: "center",
     justifyContent: "center",
     shadowOffset: {
@@ -223,5 +293,25 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
 
     elevation: 5,
+  },
+  recentStockHeader: {
+    paddingHorizontal: 15,
+    marginBottom: 10,
+  },
+  recentStockHeaderText: {
+    fontSize: 16,
+    color: "#343434",
+  },
+  recentStockContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 15,
+    paddingVertical: 8,
+    borderRadius: 10,
+    backgroundColor: "#fff",
+  },
+  recentStockTitle: {
+    width: "40%",
   },
 });
