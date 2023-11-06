@@ -2,24 +2,31 @@ import React, {useEffect, useRef, useState} from "react";
 import {Animated, TextInput, StyleSheet, Text, View} from "react-native";
 import {AntDesign} from "@expo/vector-icons";
 import StyledButton from "./components/Button/Button";
+import CategoryStock from "./components/CategoryStock";
 
 function Container() {
   const animation = useRef(new Animated.Value(0)).current;
-  // useEffect(() => {
-  //   Animated.loop(
-  //     Animated.timing(animation, {
-  //       toValue: 350,
-  //       duration: 6000,
-  //       useNativeDriver: true,
-  //     })
-  //   ).start();
-  // }, []);
+  useEffect(() => {
+    Animated.loop(
+      Animated.timing(animation, {
+        toValue: 350,
+        duration: 6000,
+        useNativeDriver: true,
+      })
+    ).start();
+  }, []);
 
   return (
     <View style={styles.container}>
-      <View style={{gap: 10}}>
+      <View style={{flex: 1, gap: 10}}>
         <Text style={{color: "#3A697B", fontSize: 18, fontWeight: 700, marginBottom: 5}}>요즘 뜨고 있는 카테고리</Text>
-        <View style={{flexDirection: "row", backgroundColor: "#f2f2f2", borderRadius: 8, marginBottom: 30}}></View>
+        <View style={{marginBottom: 10}}>
+          <CategoryStock rank="1" title="배터리제조" percentage="+15.9%" />
+          <CategoryStock rank="2" title="조선사" percentage="+15.1%" />
+          <CategoryStock rank="3" title="웹툰" percentage="+7.8%" />
+          <CategoryStock rank="4" title="무역" percentage="+6.8%" />
+          <CategoryStock rank="5" title="게임플랫폼" percentage="+5.6%" />
+        </View>
       </View>
       <View style={{gap: 10}}>
         <Text style={{color: "#3A697B", fontSize: 18, fontWeight: 700, marginBottom: 5}}>찾는 주식이 있다면</Text>
@@ -30,7 +37,7 @@ function Container() {
       </View>
       <View>
         <Text style={{color: "#3A697B", fontSize: 18, fontWeight: 700, marginBottom: 10}}>아직 뭘 살지 모르겠다면</Text>
-        <View>
+        <View style={{flex: 1}}>
           <Animated.View
             style={{
               ...styles.animatedContainer,
@@ -60,12 +67,14 @@ export default Container;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     margin: 20,
     gap: 10,
     alignSelf: "flex-start",
   },
 
   animatedContainer: {
+    flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
   },
