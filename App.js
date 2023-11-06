@@ -220,6 +220,9 @@ const styles = StyleSheet.create({
   blue: {
     color: "#007AFF",
   },
+  recentStockRate: {
+    marginLeft: 12,
+  },
   stockList: {
     flex: 6,
     width: "100%",

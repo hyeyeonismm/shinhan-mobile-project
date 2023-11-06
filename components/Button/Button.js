@@ -43,6 +43,10 @@ const themeStyles = StyleSheet.create({
     button: {flex: 0.8, padding: 15, backgroundColor: "#fff"},
     text: {alignSelf: "flex-start", marginTop: 8, color: "#392f31", fontSize: 16, fontWeight: 700},
   },
+  list: {
+    button: {backgroundColor: "#fff"},
+    text: {alignSelf: "flex-start"},
+  },
 });
 
 export default StyledButton;

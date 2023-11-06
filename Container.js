@@ -7,15 +7,15 @@ import Footer from "./components/Footer";
 
 function Container() {
   const animation = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    Animated.loop(
-      Animated.timing(animation, {
-        toValue: 350,
-        duration: 6000,
-        useNativeDriver: true,
-      })
-    ).start();
-  }, []);
+  // useEffect(() => {
+  //   Animated.loop(
+  //     Animated.timing(animation, {
+  //       toValue: 350,
+  //       duration: 6000,
+  //       useNativeDriver: true,
+  //     })
+  //   ).start();
+  // }, []);
 
   return (
     <View style={styles.container}>
