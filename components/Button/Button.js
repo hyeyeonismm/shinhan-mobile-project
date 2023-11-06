@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     width: "auto",
     flexGrow: 1,
     padding: 10,
-    borderRadius: 8,
     margin: 6,
+    borderRadius: 8,
   },
   text: {
     color: "#000",
@@ -38,6 +38,10 @@ const themeStyles = StyleSheet.create({
   gray: {
     button: {backgroundColor: "#3A697B"},
     text: {color: "#DCF2FB"},
+  },
+  category: {
+    button: {flex: 0.8, padding: 15, backgroundColor: "#fff"},
+    text: {alignSelf: "flex-start", marginTop: 8, color: "#392f31", fontSize: 16, fontWeight: 700},
   },
 });
 
