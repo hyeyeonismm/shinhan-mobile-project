@@ -32,10 +32,6 @@ const styles = StyleSheet.create({
   text: {
     color: "#c0c0c0",
   },
-  linkText: {
-    color: "#1B95E0",
-    textDecorationLine: "underline",
-  },
 });
 
 export default Footer;
