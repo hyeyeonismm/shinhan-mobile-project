@@ -14,7 +14,8 @@ const StyledButton = ({theme, title}) => {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#c0c0c0",
-    width: 80,
+    width: "auto",
+    flexGrow: 1,
     padding: 10,
     borderRadius: 8,
     margin: 6,
