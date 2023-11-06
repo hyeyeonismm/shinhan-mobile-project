@@ -3,6 +3,7 @@ import {Animated, TextInput, StyleSheet, Text, View} from "react-native";
 import {AntDesign} from "@expo/vector-icons";
 import StyledButton from "./components/Button/Button";
 import CategoryStock from "./components/CategoryStock";
+import Footer from "./components/Footer";
 
 function Container() {
   const animation = useRef(new Animated.Value(0)).current;
@@ -18,7 +19,7 @@ function Container() {
 
   return (
     <View style={styles.container}>
-      <View style={{flex: 1, gap: 10}}>
+      <View style={{flex: 1, gap: 10, marginTop: 20}}>
         <Text style={{color: "#3A697B", fontSize: 18, fontWeight: 700, marginBottom: 5}}>요즘 뜨고 있는 카테고리</Text>
         <View style={{marginBottom: 10}}>
           <CategoryStock rank="1" title="배터리제조" percentage="+15.9%" />
@@ -28,16 +29,18 @@ function Container() {
           <CategoryStock rank="5" title="게임플랫폼" percentage="+5.6%" />
         </View>
       </View>
-      <View style={{gap: 10}}>
+
+      <View style={{gap: 10, flex: 1, marginTop: 10}}>
         <Text style={{color: "#3A697B", fontSize: 18, fontWeight: 700, marginBottom: 5}}>찾는 주식이 있다면</Text>
         <View style={{flexDirection: "row", backgroundColor: "#f2f2f2", borderRadius: 8, marginBottom: 30}}>
-          <AntDesign name="search1" size={24} color="#3A697B" style={{marginTop: 5}} />
+          <AntDesign name="search1" size={24} color="#3A697B" style={{marginTop: 5, marginLeft: 7}} />
           <TextInput style={styles.searchBar} placeholder="주식 검색하기" />
         </View>
       </View>
-      <View>
+
+      <View style={{flex: 1, marginTop: 10}}>
         <Text style={{color: "#3A697B", fontSize: 18, fontWeight: 700, marginBottom: 10}}>아직 뭘 살지 모르겠다면</Text>
-        <View style={{flex: 1}}>
+        <View>
           <Animated.View
             style={{
               ...styles.animatedContainer,
@@ -59,6 +62,7 @@ function Container() {
           </Animated.View>
         </View>
       </View>
+      <Footer />
     </View>
   );
 }
@@ -68,7 +72,7 @@ export default Container;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20,
+    margin: 0,
     gap: 10,
     alignSelf: "flex-start",
   },
