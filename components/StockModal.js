@@ -18,15 +18,15 @@ const StockModal = ({modalOpen, setModalOpen, title}) => {
       },
     ],
   };
+
   const chartConfig = {
     backgroundGradientFrom: "#fff",
     backgroundGradientTo: "#fff",
     labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
     decimalPlaces: 0,
     color: (opacity = 1) => `rgba(255, 0, 0, ${opacity})`,
-    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
     style: {
-      borderRadius: 16,
       backgroundColor: "#fff",
     },
     propsForDots: {
@@ -39,16 +39,16 @@ const StockModal = ({modalOpen, setModalOpen, title}) => {
     <Modal animationType="fade" transparent={true} visible={modalOpen} onRequestClose={closeModal}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <View style={{marginBottom: 30}}>
+          <View style={{marginBottom: 30, alignSelf: "flex-start"}}>
             <Text style={styles.title}>{title}</Text>
-            <Text style={{fontWeight: 600, fontSize: 28, alignSelf: "flex-start"}}>69,600원</Text>
+            <Text style={{fontWeight: 600, fontSize: 28}}>69,600원</Text>
             <View style={{flexDirection: "row", margin: 5}}>
               <Text style={{color: "#c0c0c0"}}>11월6일보다</Text>
               <Text style={{color: "blue"}}>-1,200원(0.14%)</Text>
             </View>
           </View>
-          <View style={{alignItems: "center", justifyContent: "center"}}>
-            <LineChart data={data} width={250} height={130} chartConfig={chartConfig} />
+          <View style={{alignSelf: "center", marginBottom: 15}}>
+            <LineChart data={data} width={screenWidth - 120} height={200} chartConfig={chartConfig} />
           </View>
           <TouchableOpacity style={styles.button} onPress={closeModal}>
             <Text style={{color: "#fff"}}>닫기</Text>
