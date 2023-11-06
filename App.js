@@ -1,27 +1,24 @@
-import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-} from "react-native";
-import { Feather } from "@expo/vector-icons";
-import {
-  FontAwesome5,
-  MaterialIcons,
-  MaterialCommunityIcons,
-  Ionicons,
-} from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
-import Container from "./Container";
+import React, {useState} from "react";
+import {StatusBar} from "expo-status-bar";
+import {ScrollView, StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
+import {Feather} from "@expo/vector-icons";
+import {FontAwesome5, MaterialIcons, MaterialCommunityIcons, Ionicons} from "@expo/vector-icons";
+import {LinearGradient} from "expo-linear-gradient";
 import KospiContainer from "./KospiContainer";
 import NasdaqContainer from "./NasdaqContainer";
+import Container from "./Container";
+import StyledButton from "./components/Button/Button";
+import StockModal from "./components/StockModal";
 
 export default function App() {
   const [selectedTab, setSelectedTab] = useState("국내주식");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState(false);
+
+  const openModalWithTitle = (title) => {
+    setModalTitle(title);
+    setModalOpen(true);
+  };
 
   const kospi = [
     {
@@ -81,40 +78,16 @@ export default function App() {
         <FontAwesome5 name="bell" size={24} color="#343434" />
       </View>
 
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.body}>
+      <ScrollView style={{flex: 1}} contentContainerStyle={styles.body}>
         <View style={styles.stockTab}>
-          <TouchableOpacity
-            onPress={() => handleTabClick("국내주식")}
-            style={[styles.tab]}
-          >
-            <LinearGradient
-              colors={
-                selectedTab === "국내주식"
-                  ? ["#6CB0D6", "#6E6CD6"]
-                  : ["#eee", "#eee"]
-              }
-              style={[styles.tab, styles.tabPadding]}
-              start={{ x: 0, y: 1 }}
-              end={{ x: 1, y: 1 }}
-            >
+          <TouchableOpacity onPress={() => handleTabClick("국내주식")} style={[styles.tab]}>
+            <LinearGradient colors={selectedTab === "국내주식" ? ["#6CB0D6", "#6E6CD6"] : ["#eee", "#eee"]} style={[styles.tab, styles.tabPadding]} start={{x: 0, y: 1}} end={{x: 1, y: 1}}>
               <Text style={styles.tabText}>국내 주식</Text>
             </LinearGradient>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => handleTabClick("해외주식")}
-            style={[styles.tab]}
-          >
-            <LinearGradient
-              colors={
-                selectedTab === "해외주식"
-                  ? ["#6CB0D6", "#6E6CD6"]
-                  : ["#eee", "#eee"]
-              }
-              style={[styles.tab, styles.tabPadding]}
-              start={{ x: 0, y: 1 }}
-              end={{ x: 1, y: 1 }}
-            >
+          <TouchableOpacity onPress={() => handleTabClick("해외주식")} style={[styles.tab]}>
+            <LinearGradient colors={selectedTab === "해외주식" ? ["#6CB0D6", "#6E6CD6"] : ["#eee", "#eee"]} style={[styles.tab, styles.tabPadding]} start={{x: 0, y: 1}} end={{x: 1, y: 1}}>
               <Text style={styles.tabText}>해외 주식</Text>
             </LinearGradient>
           </TouchableOpacity>
@@ -135,43 +108,18 @@ export default function App() {
 
         <View style={styles.stockList}>
           <View style={styles.stockQuickNav}>
-            <LinearGradient
-              colors={["#6CB0D6", "#6E6CD6"]}
-              start={{ x: 0, y: 1 }}
-              end={{ x: 1, y: 1 }}
-              style={[styles.stockQuickNavTab]}
-            >
-              <Text style={[styles.stockQuickNavText, styles.tabText]}>
-                계좌 잔고
-              </Text>
+            <LinearGradient colors={["#6CB0D6", "#6E6CD6"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.stockQuickNavTab]}>
+              <Text style={[styles.stockQuickNavText, styles.tabText]}>계좌 잔고</Text>
               <MaterialIcons name="account-balance" size={19} color="#ffffff" />
             </LinearGradient>
 
-            <LinearGradient
-              colors={["#6CB0D6", "#6E6CD6"]}
-              start={{ x: 0, y: 1 }}
-              end={{ x: 1, y: 1 }}
-              style={[styles.stockQuickNavTab]}
-            >
-              <Text style={[styles.stockQuickNavText, styles.tabText]}>
-                이체
-              </Text>
-              <MaterialCommunityIcons
-                name="bank-transfer"
-                size={28}
-                color="#ffffff"
-              />
+            <LinearGradient colors={["#6CB0D6", "#6E6CD6"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.stockQuickNavTab]}>
+              <Text style={[styles.stockQuickNavText, styles.tabText]}>이체</Text>
+              <MaterialCommunityIcons name="bank-transfer" size={28} color="#ffffff" />
             </LinearGradient>
 
-            <LinearGradient
-              colors={["#6CB0D6", "#6E6CD6"]}
-              start={{ x: 0, y: 1 }}
-              end={{ x: 1, y: 1 }}
-              style={[styles.stockQuickNavTab]}
-            >
-              <Text style={[styles.stockQuickNavText, styles.tabText]}>
-                보유 주식
-              </Text>
+            <LinearGradient colors={["#6CB0D6", "#6E6CD6"]} start={{x: 0, y: 1}} end={{x: 1, y: 1}} style={[styles.stockQuickNavTab]}>
+              <Text style={[styles.stockQuickNavText, styles.tabText]}>보유 주식</Text>
               <Ionicons name="wallet-outline" size={20} color="#ffffff" />
             </LinearGradient>
           </View>
@@ -181,35 +129,26 @@ export default function App() {
               <Text style={styles.recentStockHeaderText}>최근 본 종목</Text>
             </View>
             <View style={styles.recentStockContainer}>
-              <Image
-                source={require("./assets/logo1.png")}
-                style={{ width: 40.5, height: 41 }}
-              />
-              <Text style={styles.recentStockTitle}>삼성전자</Text>
-              <Text style={[styles.recentStockValue, styles.blue]}>69,600</Text>
+              <Image source={require("./assets/logo1.png")} style={{width: 40.5, height: 41}} />
+              <StyledButton theme="list" title="삼성전자" onPress={() => openModalWithTitle("삼성전자")} />
+              <Text style={[styles.blue]}>69,600</Text>
               <Text style={[styles.recentStockRate, styles.blue]}>-0.14%</Text>
             </View>
             <View style={styles.recentStockContainer}>
-              <Image
-                source={require("./assets/logo3.png")}
-                style={{ width: 40.5, height: 41 }}
-              />
-              <Text style={styles.recentStockTitle}>카카오</Text>
-              <Text style={[styles.recentStockValue, styles.red]}>41,300</Text>
+              <Image source={require("./assets/logo3.png")} style={{width: 40.5, height: 41}} />
+              <StyledButton theme="list" title="카카오" onPress={() => openModalWithTitle("카카오")} />
+              <Text style={[styles.red]}>41,300</Text>
               <Text style={[styles.recentStockRate, styles.red]}>+7.13%</Text>
             </View>
             <View style={styles.recentStockContainer}>
-              <Image
-                source={require("./assets/logo2.png")}
-                style={{ width: 40.5, height: 41 }}
-              />
-              <Text style={styles.recentStockTitle}>신한지주</Text>
-              <Text style={[styles.recentStockValue, styles.red]}>34,900</Text>
+              <Image source={require("./assets/logo2.png")} style={{width: 40.5, height: 41}} />
+              <StyledButton theme="list" title="신한지주" onPress={() => openModalWithTitle("신한지주")} />
+              <Text style={[styles.red]}>34,900</Text>
               <Text style={[styles.recentStockRate, styles.red]}>+1.16%</Text>
             </View>
           </View>
         </View>
-
+        <StockModal modalOpen={modalOpen} setModalOpen={setModalOpen} title={modalTitle} />
         <Container />
       </ScrollView>
     </View>
@@ -290,6 +229,9 @@ const styles = StyleSheet.create({
   blue: {
     color: "#007AFF",
   },
+  recentStockRate: {
+    marginLeft: 12,
+  },
   stockList: {
     flex: 6,
     width: "100%",
@@ -335,8 +277,5 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 10,
     backgroundColor: "#fff",
-  },
-  recentStockTitle: {
-    width: "40%",
   },
 });

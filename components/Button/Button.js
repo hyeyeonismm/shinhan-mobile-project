@@ -1,11 +1,11 @@
 import React from "react";
-import {TouchableOpacity, StyleSheet, Text, Button} from "react-native";
+import {TouchableOpacity, StyleSheet, Text} from "react-native";
 
-const StyledButton = ({theme, title}) => {
+const StyledButton = ({theme, title, onPress}) => {
   const buttonStyle = themeStyles[theme]?.button;
   const textStyle = themeStyles[theme]?.text;
   return (
-    <TouchableOpacity style={[styles.button, buttonStyle]}>
+    <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
       <Text style={[styles.text, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
@@ -42,6 +42,10 @@ const themeStyles = StyleSheet.create({
   category: {
     button: {flex: 0.8, padding: 15, backgroundColor: "#fff"},
     text: {alignSelf: "flex-start", marginTop: 8, color: "#392f31", fontSize: 16, fontWeight: 700},
+  },
+  list: {
+    button: {backgroundColor: "#fff"},
+    text: {alignSelf: "flex-start"},
   },
 });
 
