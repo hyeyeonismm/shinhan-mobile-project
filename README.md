@@ -5,24 +5,23 @@
 
 
 
-**📌 필수 포함 내용**
-
+### 📌 필수 포함 내용
 코스피 지수, 종목 3개 리스트, 현재가
-
-**📌 선택사항**
-
-종목 별 상세 정보 팝업
 
 <br/>
 
-**⚙ Architecture**
+### 📌 선택사항
+종목 별 상세 정보 팝업
 
+
+<br/>
+
+### ⚙ Architecture
 React-native
 
 <br/>
 
-**🔍 Screenshots**
-
+### 🔍 Screenshots
 <img src="https://github.com/hyeyeonismm/shinhan-mobile-project/assets/91720344/6a5bc551-2b3a-4a4f-b071-d40316a9e1fd" width="33%" />
 
 <img src="https://github.com/hyeyeonismm/shinhan-mobile-project/assets/91720344/c3b9af15-2eb6-4e31-86aa-1128471dd3ae" width="33%" />
