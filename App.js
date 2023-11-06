@@ -271,6 +271,7 @@ const styles = StyleSheet.create({
   },
   nasdaqWrap: {
     flex: 1.9,
+    backgroundColor: "#fff",
     marginBottom: 20,
     shadowColor: "#343434",
     shadowOffset: {
@@ -280,6 +281,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    borderRadius: 20,
+    padding: 5,
   },
   red: {
     color: "#CB0B37",
